@@ -1,0 +1,130 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+/// jon-development (Jonathan G.), certify that all code submitted is my own work; that I have not copied it from any other source.  I also certify that I have not allowed my work to be copied by others.
+/// Program is the main method for console sorting application
+/// Sorting through linq using lambda -> found at https://stackoverflow.com/questions/722868/sorting-a-list-using-lambda-linq-to-objects
+namespace EmployeeSorter
+{
+    class Lab1
+    {
+        /// <summary>
+        ///  string for user Input
+        /// </summary>
+        private static string userInput;
+        /// <summary>
+        /// double for overtime hours
+        /// </summary>
+        public static double overtimeHours { get; private set; }
+
+        /// <summary>
+
+        static void Main(string[] args)
+        {
+            /// Creates a list of employees
+            List<Employee> employees = new List<Employee>();
+            /// Reads data from data
+            List<string> data = File.ReadAllLines(@"employee.txt").ToList();
+
+            foreach (var line in data)
+            /// Splits data in array
+            {
+                string[] splitData = line.Split(',');
+                /// Creates new employee instances
+                Employee newEmp = new Employee();
+                /// Loads employee values, then parses them to correct values
+                newEmp.name = splitData[0];
+                newEmp.empNumber = int.Parse(splitData[1]);
+                newEmp.payRate = double.Parse(splitData[2]);
+                newEmp.hours = double.Parse(splitData[3]);
+                /// Overtime calculation
+                if (newEmp.hours > 40)
+                {
+                     overtimeHours = newEmp.hours - 40;
+                }
+                newEmp.grossPay = Math.Round(Convert.ToDecimal( (overtimeHours + newEmp.hours) * newEmp.payRate ), 2) ;
+
+                /// Adds created employee to main array
+                employees.Add(newEmp);
+            }
+
+                /// User Input and Sorting of Array
+            do
+            {
+                /// Console Menu
+                Console.WriteLine("\n"+"Welcome to Jon's Employee Sorter"+"\n");
+                Console.WriteLine("Press 1- Sort By Last Name");
+                Console.WriteLine("Press 2- Sort By Employee Number");
+                Console.WriteLine("Press 3 - Sort By Pay Rate");
+                Console.WriteLine("Press 4 - Sort By Hours");
+                Console.WriteLine("Press 5 - Sort By Gross Pay");
+                Console.WriteLine("Press 6 - Exit Program"+"\n");
+                string userInput = Console.ReadLine();
+                Console.WriteLine("\n{0,-15} {1,12} {2,12} {3,12} {4,12:C}\n", "Employee", "Number", "Pay Rate", "Hours", "Gross Pay");
+                /// user Input Switch
+                switch (userInput)
+                {
+                    
+                    /// Case structure for each sorting method
+                    case "1":
+                        employees = employees.OrderBy(x => x.name).ToList();
+                        foreach (var Employee in employees)
+                        {
+                            Console.WriteLine("{0,-15} {1,12} {2,12} {3,12} {4,12:C}", Employee.name, Employee.empNumber, Employee.payRate, Employee.hours, Employee.grossPay);
+                        }
+
+                        break;
+
+                    case "2":
+                        employees = employees.OrderBy(x => x.empNumber).ToList();
+                        foreach (var Employee in employees)
+                        {
+                            Console.WriteLine("{0,-15} {1,12} {2,12} {3,12} {4,12:C}", Employee.name, Employee.empNumber, Employee.payRate, Employee.hours, Employee.grossPay);
+                        }
+
+                        break;
+
+                    case "3":
+                        employees = employees.OrderByDescending(x => x.payRate).ToList();
+                        foreach (var Employee in employees)
+                        {
+                            Console.WriteLine("{0,-15} {1,12} {2,12} {3,12} {4,12:C}", Employee.name, Employee.empNumber, Employee.payRate, Employee.hours, Employee.grossPay);
+                        }
+
+                        break;
+
+                    case "4":
+                        employees = employees.OrderByDescending(x => x.hours).ToList();
+                        foreach (var Employee in employees)
+                        {
+                            Console.WriteLine("{0,-15} {1,12} {2,12} {3,12} {4,12:C}", Employee.name, Employee.empNumber, Employee.payRate, Employee.hours, Employee.grossPay);
+                        }
+
+                        break;
+
+                    case "5":
+                        employees = employees.OrderByDescending(x => x.grossPay).ToList();
+                        foreach (var Employee in employees)
+                        {
+                            Console.WriteLine("{0,-15} {1,12} {2,12} {3,12} {4,12:C}", Employee.name, Employee.empNumber, Employee.payRate, Employee.hours, Employee.grossPay);
+                        }
+                        
+                        break;
+                      /// Exit Program
+                    case "6":
+                        System.Environment.Exit(0);
+                        break;
+
+                }
+
+            } while (userInput != "6");
+
+            /// Print to console
+            Console.ReadLine();
+            
+
+
+        }
+    }
+}
