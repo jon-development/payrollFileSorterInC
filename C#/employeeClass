@@ -1,0 +1,39 @@
+using System;
+using System.Linq;
+
+namespace EmployeeSorter
+
+{
+    /// # jon_development (Jonathan G.), certify that all code submitted is my own work; that I have not copied it from any other source.  I also certify that I have not allowed my work to be copied by others.
+    
+    /// Class which holds employee properties
+    public class Employee
+    {
+        /// <summary>
+        ///  employee name
+        /// </summary>
+        public string name { get; set; }
+        /// <summary>
+        ///  employee Number
+        /// </summary>
+        public int empNumber { get; set; }
+        /// <summary>
+        ///  employee Payrate
+        /// </summary>
+        public double payRate { get; set; }
+        /// <summary>
+        ///  employee hours
+        /// </summary>
+        public double hours { get; set; }
+        /// <summary>
+        /// grossPay
+        /// </summary>
+        public decimal grossPay { get; set; }
+
+        
+
+       
+
+
+    }
+}
