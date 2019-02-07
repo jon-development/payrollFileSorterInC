@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeSorter", "ConsoleApp3\EmployeeSorter.csproj", "{1CF866FB-ED82-4F87-81E8-75403EF97F3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CF866FB-ED82-4F87-81E8-75403EF97F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF866FB-ED82-4F87-81E8-75403EF97F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF866FB-ED82-4F87-81E8-75403EF97F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF866FB-ED82-4F87-81E8-75403EF97F3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28EDA0EE-81B4-46E7-9F41-D09A4F8D9A9D}
+	EndGlobalSection
+EndGlobal
